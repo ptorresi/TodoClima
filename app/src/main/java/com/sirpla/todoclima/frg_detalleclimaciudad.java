@@ -1,0 +1,35 @@
+package com.sirpla.todoclima;
+
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class frg_detalleclimaciudad extends Fragment {
+
+
+    public frg_detalleclimaciudad() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View fragDetalleClima = inflater.inflate(R.layout.frg_detalleclimaciudad, container,
+                false);
+
+
+
+        return fragDetalleClima;
+
+    }
+
+}
