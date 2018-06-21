@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".frg_detalleclimaciudad">
 
-    <!-- TODO: Update blank fragment layout -->
+
 
     <TableLayout
         android:layout_width="match_parent"
