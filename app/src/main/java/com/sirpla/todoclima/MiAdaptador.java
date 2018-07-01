@@ -6,42 +6,53 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MiAdaptador extends BaseAdapter{
+public class miadaptador extends BaseAdapter {
+
     private Activity contexto;
-    private ArrayList<Ciudad> ciudad;
+    private ArrayList<Ciudad> localciudad;
 
     private LayoutInflater inflador = null;
 
-    public MiAdaptador(Activity a, ArrayList<Ciudad> c){
+
+    miadaptador(Activity a, ArrayList<Ciudad> p) {
+
         this.contexto = a;
-        this.ciudad = c;
+        this.localciudad = p;
 
         inflador = (LayoutInflater)contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 
     @Override
-    public int getCount() {
-        return ciudad.size();
-    }
+    public int getCount() {return localciudad.size();}
 
     @Override
-    public Object getItem(int position) {
-        return ciudad.get(position);
-    }
+    public Object getItem(int position) {return localciudad.get(position); }
 
     @Override
-    public long getItemId(int position) {
-        return ciudad.get(position).getId();
-    }
+    public long getItemId(int position) {return localciudad.get(position).getId(); }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View vi, ViewGroup parent) {
 
-       //TODO "Escribir el metodo getView de MiAdaptador"
-        return null;
+        View customRow = inflador.inflate( R.layout.listrow_ciudades, null);
+
+        Ciudad ciudad = localciudad.get(position);
+
+        TextView nombreCiudad = customRow.findViewById(R.id.txt_NombreCiudad);
+        TextView temperatura = customRow.findViewById(R.id.txt_Temperatura);
+        ImageView foto = customRow.findViewById(R.id.img_IconoClima);
+
+        nombreCiudad.setText(ciudad.getNombreCiudad());
+        temperatura.setText(Float.toString( ciudad.getTemperatura()));
+        foto.setImageResource(contexto.getResources().getIdentifier(
+                ciudad.getNombreImagen(),"drawable",  contexto.getPackageName()));
+
+        return customRow;
     }
 }
